@@ -1,0 +1,212 @@
+<!DOCTYPE htm5>
+<html>
+<head>
+	<!-- Load the Paper.js library -->
+	<title>Patatap Clone</title>
+	<link rel="stylesheet" href="assets/css/styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
+	<script type="text/javascript" src="assets/lib/paper-full.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.9/howler.core.min.js"></script>
+	<script type="text/paperscript" canvas="myCanvas">
+		var text = new PointText(new Point(view.size.width/2, view.size.height/2));
+		text.justification = 'center';
+		text.fillColor = 'white';
+		text.style.fontFamily = "Exo-2";
+		text.style.fontSize = "50px";
+		text.content = 'press keys a through z and space. go ahead, press them';
+		var circles = [];
+
+		var keyPress = false;
+
+		function generateColor() {
+	        var r = Math.floor(Math.random() * 256).toString(16);
+	        var g = Math.floor(Math.random() * 256).toString(16);
+	        var b = Math.floor(Math.random() * 256).toString(16);
+	        return cString = "#" + r + g + b;
+		}
+
+		function circleAnimation() {
+			for(var i = 0; i < circles.length; i++){
+				circles[i].fillColor.hue += 1;
+				circles[i].scale(.95);
+			}
+		}
+
+		function onKeyDown(event) {
+			keyPress = true;
+			var maxPoint = new Point(view.size.width, view.size.height);
+			var randomPoint = Point.random();
+			var point = maxPoint * randomPoint;
+
+			var newCircle = new Path.Circle(point, 500)
+			newCircle.fillColor = generateColor();
+			circles.push(newCircle);
+		}
+
+		function onFrame(event){
+			if (keyPress && text.opacity > 0.01) {
+				text.opacity = text.opacity * 0.98;
+			}
+			circleAnimation();
+		}
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" resize>
+
+	</canvas>
+	<script type="text/javascript">
+
+
+		var keyData = {
+			q: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/bubbles.mp3']
+				})
+			},
+			w: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/clay.mp3']
+				})
+			},
+			e: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/confetti.mp3']
+				})
+			},
+			r: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/corona.mp3']
+				})
+			},
+				t: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/dotted-spiral.mp3']
+				})
+			},
+			y: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/flash-1.mp3']
+				})
+			},
+			u: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/flash-2.mp3']
+				})
+			},
+			i: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/flash-3.mp3']
+				})
+			},
+			o: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/glimmer.mp3']
+				})
+			},
+			p: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/moon.mp3']
+				})
+			},
+			a: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/pinwheel.mp3']
+				})
+			},
+			s: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/piston-1.mp3']
+				})
+			},
+				d: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/piston-2.mp3']
+				})
+			},
+			f: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/piston-3.mp3']
+				})
+			},
+			g: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/prism-1.mp3']
+				})
+			},
+			h: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/prism-2.mp3']
+				})
+			},
+			j: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/prism-3.mp3']
+				})
+			},
+			k: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/splits.mp3']
+				})
+			},
+			l: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/squiggle.mp3']
+				})
+			},
+			z: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/strike.mp3']
+				})
+			},
+			x: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/suspension.mp3']
+				})
+			},
+			c: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/timer.mp3']
+				})
+			},
+			v: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/ufo.mp3']
+				})
+			},
+			b: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/veil.mp3']
+				})
+			},
+			n: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/wipe.mp3']
+				})
+			},
+			m: {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/zig-zag.mp3']
+				})
+			},
+			" " : {
+				sound: new Howl({
+					src: ['https://raw.githubusercontent.com/jonobr1/Neuronal-Synchrony/master/assets/A/bubbles.mp3']
+				})
+			}
+		};
+
+		document.addEventListener('keypress', (event) => {
+			console.log(event.key);
+			var sound = keyData[event.key].sound;
+			sound.play();
+		});
+
+		var canvas = document.getElementById("myCanvas");
+		var ctx = canvas.getContext("2d");
+		ctx.font = "30px Exo2";
+		ctx.fillText("Hello World",10,50);
+
+	</script>
+</body>
+</html>
